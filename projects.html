@@ -54,68 +54,50 @@
       margin-bottom: 40px;
     }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
       gap: 30px;
       justify-content: center;
     }
 
-    .project-card {
-      perspective: 1000px;
+    .glass-card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 30px;
+      width: 300px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s;
       cursor: pointer;
-    }
-
-    .card-inner {
-      width: 100%;
-      padding-top: 100%;
       position: relative;
-      transition: transform 0.8s;
-      transform-style: preserve-3d;
     }
 
-    .project-card:hover .card-inner {
-      transform: rotateY(180deg);
+    .glass-card:hover {
+      transform: translateY(-10px);
     }
 
-    .card-front,
-    .card-back {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: white;
-      backface-visibility: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      font-size: 1.2rem;
+    .glass-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #2c7a4d;
     }
 
-    .card-front {
-      background: #2c7a4d;
+    .glass-card p {
+      font-size: 1rem;
+      line-height: 1.4;
     }
 
-    .card-back {
-      background: #4abf8a;
-      transform: rotateY(180deg);
-    }
-
-    /* Modal */
     .modal {
+      display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      display: none;
+      background: rgba(0, 0, 0, 0.6);
       justify-content: center;
       align-items: center;
-      background-color: rgba(0, 0, 0, 0.6);
       z-index: 2000;
     }
 
@@ -123,8 +105,8 @@
       background: white;
       padding: 30px;
       border-radius: 12px;
-      max-width: 600px;
-      text-align: left;
+      max-width: 700px;
+      width: 90%;
       animation: fadeIn 0.3s ease-out;
     }
 
@@ -132,8 +114,33 @@
       margin-bottom: 15px;
     }
 
-    .modal-content p {
-      line-height: 1.6;
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .tab-button {
+      padding: 10px 15px;
+      background: #2c7a4d;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .tab-button.active {
+      background: #4abf8a;
+    }
+
+    .tab-content {
+      display: none;
+      text-align: left;
+    }
+
+    .tab-content.active {
+      display: block;
     }
 
     .close-btn {
@@ -172,64 +179,108 @@
   </nav>
 
   <!-- Projects Section -->
-  <section id="projects">
+  <section>
     <h2>My Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card"
-        onclick="openModal('Research', 'Research includes publications and work done with academic mentors. Example: Neural Network on FPGA for real-time sensor processing.')">
-        <div class="card-inner">
-          <div class="card-front">Research</div>
-          <div class="card-back">View Projects</div>
-        </div>
+    <div class="card-container">
+      <div class="glass-card" onclick="openModal('Research')">
+        <h3>Research</h3>
+        <p>Academic research, publications, experimental designs...</p>
       </div>
-      <div class="project-card"
-        onclick="openModal('Project Team', 'Projects done as part of Hackathons or Tech Clubs. Example: Smart Watch with real-time vitals and gesture control.')">
-        <div class="card-inner">
-          <div class="card-front">Project Team</div>
-          <div class="card-back">View Projects</div>
-        </div>
+      <div class="glass-card" onclick="openModal('Team')">
+        <h3>Project Team</h3>
+        <p>Collaborative engineering work, hackathons, team efforts...</p>
       </div>
-      <div class="project-card"
-        onclick="openModal('Class Projects', 'Class-based work that includes simulations, design work, and group assignments. Example: RISC-V pipelined processor.')">
-        <div class="card-inner">
-          <div class="card-front">Class Projects</div>
-          <div class="card-back">View Projects</div>
-        </div>
+      <div class="glass-card" onclick="openModal('Class')">
+        <h3>Class Projects</h3>
+        <p>University coursework, simulations, and system designs...</p>
       </div>
-      <div class="project-card"
-        onclick="openModal('Work', 'Internship or job-based work. Example: RTL automation tool for SoC verification at [Company].')">
-        <div class="card-inner">
-          <div class="card-front">Work</div>
-          <div class="card-back">View Projects</div>
-        </div>
+      <div class="glass-card" onclick="openModal('Work')">
+        <h3>Work</h3>
+        <p>Internships, co-ops, and applied industry experience...</p>
       </div>
     </div>
   </section>
 
-  <!-- Modal -->
+  <!-- Modal Structure -->
   <div class="modal" id="modal">
-    <div class="modal-content" id="modal-content">
-      <h3 id="modal-title"></h3>
-      <p id="modal-desc"></p>
+    <div class="modal-content">
+      <h3 id="modalTitle"></h3>
+      <div class="tabs" id="tabButtons"></div>
+      <div id="tabContents"></div>
       <button class="close-btn" onclick="closeModal()">Close</button>
     </div>
   </div>
 
-  <!-- JavaScript -->
   <script>
-    function openModal(title, desc) {
-      document.getElementById('modal-title').innerText = title;
-      document.getElementById('modal-desc').innerText = desc;
-      document.getElementById('modal').style.display = 'flex';
+    const projectDetails = {
+      Research: {
+        Overview: "Detailed academic explorations, whitepapers, and publications.",
+        Publications: "1. Neural Network on FPGA\n2. Smart sensing for biosignals",
+        Tools: "MATLAB, LaTeX, TensorFlow"
+      },
+      Team: {
+        Overview: "Cross-functional team projects in hackathons or clubs.",
+        Highlights: "1. Smartwatch Health Monitor\n2. AI-based Rover",
+        Tools: "Raspberry Pi, Python, C++, Figma"
+      },
+      Class: {
+        Overview: "Classwork across embedded systems, VLSI, OS, etc.",
+        Projects: "1. RISC-V Processor\n2. Memory Allocation Tool",
+        Languages: "Verilog, C, Python"
+      },
+      Work: {
+        Overview: "Professional experience including internships and jobs.",
+        Contributions: "1. SoC Verification Tools\n2. FPGA Driver Interface",
+        Technologies: "SystemVerilog, UVM, Git, CI/CD"
+      }
+    };
+
+    function openModal(category) {
+      const modal = document.getElementById("modal");
+      const title = document.getElementById("modalTitle");
+      const tabButtons = document.getElementById("tabButtons");
+      const tabContents = document.getElementById("tabContents");
+
+      title.textContent = category;
+      tabButtons.innerHTML = '';
+      tabContents.innerHTML = '';
+
+      const content = projectDetails[category];
+      let first = true;
+      for (const key in content) {
+        const button = document.createElement('button');
+        button.textContent = key;
+        button.classList.add('tab-button');
+        if (first) button.classList.add('active');
+        button.onclick = () => switchTab(key);
+        tabButtons.appendChild(button);
+
+        const div = document.createElement('div');
+        div.classList.add('tab-content');
+        if (first) div.classList.add('active');
+        div.id = `tab-${key}`;
+        div.textContent = content[key];
+        tabContents.appendChild(div);
+
+        first = false;
+      }
+
+      modal.style.display = 'flex';
+    }
+
+    function switchTab(key) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      document.querySelector(`.tab-button:contains(${key})`)?.classList.add('active');
+      document.getElementById(`tab-${key}`).classList.add('active');
     }
 
     function closeModal() {
-      document.getElementById('modal').style.display = 'none';
+      document.getElementById("modal").style.display = 'none';
     }
 
-    // Close modal on background click
-    document.getElementById('modal').addEventListener('click', function (e) {
-      if (e.target === this) closeModal();
+    document.getElementById("modal").addEventListener("click", function (e) {
+      if (e.target.id === "modal") closeModal();
     });
   </script>
 

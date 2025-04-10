@@ -19,6 +19,7 @@
       color: #333;
     }
 
+    /* Sticky Nav */
     nav {
       position: sticky;
       top: 0;
@@ -124,6 +125,28 @@
         transform: translateY(8px);
       }
     }
+
+    /* Handles Image Layout */
+    .handles-logos {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .handles-logos img {
+      width: 80px;
+      height: auto;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .handles-logos a:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
   </style>
 </head>
 
@@ -156,25 +179,20 @@
   </section>
 
   <!-- Handles Section -->
-  <!-- Handles Section -->
   <section id="handles">
     <h2>Find Me Online</h2>
-    <div class="handles-container">
-      <a href="https://github.com/GeorgeM58" target="_blank" class="handle-card github">
-        <span>🐱 GitHub</span>
-        <p>GeorgeM58</p>
+    <div class="handles-logos">
+      <a href="https://github.com/GeorgeM58" target="_blank">
+        <img src="github.jpg" alt="GitHub" />
       </a>
-      <a href="https://www.linkedin.com/in/george-maidhof/" target="_blank" class="handle-card linkedin">
-        <span>💼 LinkedIn</span>
-        <p>George Maidhof</p>
+      <a href="https://www.linkedin.com/in/george-maidhof/" target="_blank">
+        <img src="linkedin.png" alt="LinkedIn" />
       </a>
-      <a href="https://www.strava.com/athletes/57573053" target="_blank" class="handle-card strava">
-        <span>🏃 Strava</span>
-        <p>@George Maidhof</p>
+      <a href="https://www.strava.com/athletes/57573053" target="_blank">
+        <img src="strava.png" alt="Strava" />
       </a>
     </div>
   </section>
-
 
 </body>
 

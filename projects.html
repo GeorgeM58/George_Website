@@ -43,20 +43,119 @@
     }
 
     section {
-      padding: 80px 20px;
-      max-width: 900px;
+      padding: 60px 20px;
+      max-width: 1100px;
       margin: auto;
-    }
-
-    section h2 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
       text-align: center;
     }
 
-    section p {
+    section h2 {
+      font-size: 2.4rem;
+      margin-bottom: 40px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .project-card {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      width: 100%;
+      padding-top: 100%;
+      position: relative;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .project-card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: white;
+      backface-visibility: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      font-size: 1.2rem;
+    }
+
+    .card-front {
+      background: #2c7a4d;
+    }
+
+    .card-back {
+      background: #4abf8a;
+      transform: rotateY(180deg);
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 2000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 600px;
+      text-align: left;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .modal-content h3 {
+      margin-bottom: 15px;
+    }
+
+    .modal-content p {
       line-height: 1.6;
-      font-size: 1.1rem;
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      background: #2c7a4d;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
@@ -65,21 +164,74 @@
 
   <!-- Sticky Nav -->
   <nav>
-    <a href="index.html#home">Home</a> <!-- Takes you back to the index page and scrolls to #home -->
-    <a href="index.html#about">About Me</a> <!-- Takes you back to the index page and scrolls to #about -->
-    <a href="projects.html">Projects</a> <!-- Takes you to the projects.html page -->
-    <a href="photos.html">Photos</a> <!-- Takes you to the photos.html page -->
-    <a href="index.html#handles">Handles</a> <!-- Takes you back to the index page and scrolls to #handles -->
+    <a href="index.html#home">Home</a>
+    <a href="index.html#about">About Me</a>
+    <a href="projects.html">Projects</a>
+    <a href="photos.html">Photos</a>
+    <a href="index.html#handles">Handles</a>
   </nav>
-
 
   <!-- Projects Section -->
   <section id="projects">
-    <h2>Projects</h2>
-    <p>
-      #Todo
-    </p>
+    <h2>My Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card"
+        onclick="openModal('Research', 'Research includes publications and work done with academic mentors. Example: Neural Network on FPGA for real-time sensor processing.')">
+        <div class="card-inner">
+          <div class="card-front">Research</div>
+          <div class="card-back">View Projects</div>
+        </div>
+      </div>
+      <div class="project-card"
+        onclick="openModal('Project Team', 'Projects done as part of Hackathons or Tech Clubs. Example: Smart Watch with real-time vitals and gesture control.')">
+        <div class="card-inner">
+          <div class="card-front">Project Team</div>
+          <div class="card-back">View Projects</div>
+        </div>
+      </div>
+      <div class="project-card"
+        onclick="openModal('Class Projects', 'Class-based work that includes simulations, design work, and group assignments. Example: RISC-V pipelined processor.')">
+        <div class="card-inner">
+          <div class="card-front">Class Projects</div>
+          <div class="card-back">View Projects</div>
+        </div>
+      </div>
+      <div class="project-card"
+        onclick="openModal('Work', 'Internship or job-based work. Example: RTL automation tool for SoC verification at [Company].')">
+        <div class="card-inner">
+          <div class="card-front">Work</div>
+          <div class="card-back">View Projects</div>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content" id="modal-content">
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc"></p>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function openModal(title, desc) {
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-desc').innerText = desc;
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    // Close modal on background click
+    document.getElementById('modal').addEventListener('click', function (e) {
+      if (e.target === this) closeModal();
+    });
+  </script>
 
 </body>
 

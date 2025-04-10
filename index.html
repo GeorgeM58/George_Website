@@ -126,26 +126,34 @@
       }
     }
 
-    /* Handles Image Layout */
+    /* Handles Section Styling */
     .handles-logos {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 3rem;
       margin-top: 30px;
       flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .handles-logos.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .handles-logos img {
-      width: 80px;
+      width: 120px;
       height: auto;
-      border-radius: 12px;
+      border-radius: 16px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .handles-logos a:hover img {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      transform: scale(1.15) rotate(2deg);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
   </style>
 </head>
@@ -193,6 +201,23 @@
       </a>
     </div>
   </section>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const handlesLogos = document.querySelector('.handles-logos');
+
+    function revealOnScroll() {
+      const triggerBottom = window.innerHeight * 0.85;
+      const boxTop = handlesLogos.getBoundingClientRect().top;
+
+      if (boxTop < triggerBottom) {
+        handlesLogos.classList.add('visible');
+      }
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
 
 </body>
 

@@ -15,7 +15,7 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f0f4f8;
+      background: #fdfdfd;
       color: #333;
     }
 
@@ -29,6 +29,7 @@
       gap: 2rem;
       z-index: 1000;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      animation: slideDown 0.6s ease-in-out;
     }
 
     nav a {
@@ -42,94 +43,82 @@
       color: #d4f5e9;
     }
 
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     .container {
       padding: 80px 20px;
-      max-width: 1200px;
+      max-width: 900px;
       margin: auto;
-      text-align: center;
+      animation: fadeIn 0.8s ease-in-out;
     }
 
     .container h2 {
       font-size: 2.5rem;
       margin-bottom: 40px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+      text-align: left;
     }
 
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+    .resume-section {
+      margin-bottom: 40px;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
 
-    .category {
-      background: linear-gradient(135deg, #ffffff88, #e0f7ea88);
-      backdrop-filter: blur(12px);
-      border-radius: 20px;
-      padding: 2rem;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
+    .resume-section:hover {
+      transform: scale(1.02);
     }
 
-    .category:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .category h3 {
-      margin-bottom: 1rem;
-      font-size: 1.6rem;
+    .resume-section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
       color: #2c7a4d;
     }
 
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 9999;
+    .resume-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
     }
 
-    .modal-content {
-      background: white;
-      padding: 2rem;
-      border-radius: 20px;
-      max-width: 800px;
-      width: 90%;
-      max-height: 80vh;
-      overflow-y: auto;
-      position: relative;
-      animation: fadeIn 0.3s ease;
+    .view-more {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 16px;
+      background: #2c7a4d;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s ease;
     }
 
-    .modal h3 {
-      margin-bottom: 1rem;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 1.5rem;
-      cursor: pointer;
-      background: none;
-      border: none;
-      color: #333;
+    .view-more:hover {
+      background: #25623c;
     }
 
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: scale(0.95);
+        transform: translateY(30px);
       }
 
       to {
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0);
       }
     }
   </style>
@@ -145,69 +134,36 @@
   </nav>
 
   <div class="container">
-    <h2>My Projects</h2>
-    <div class="categories">
-      <div class="category" onclick="openModal('Research')">
-        <h3>Research</h3>
-        <p>Explore my academic and scientific projects.</p>
-      </div>
-      <div class="category" onclick="openModal('Team')">
-        <h3>Project Team</h3>
-        <p>Check out projects built with collaborators.</p>
-      </div>
-      <div class="category" onclick="openModal('Class')">
-        <h3>Class Projects</h3>
-        <p>University assignments that turned into cool builds.</p>
-      </div>
-      <div class="category" onclick="openModal('Work')">
-        <h3>Work</h3>
-        <p>Professional contributions and engineering work.</p>
-      </div>
+    <h2>Project Portfolio</h2>
+
+    <div class="resume-section">
+      <h3>Research</h3>
+      <p>Projects driven by academic and scientific inquiry, focusing on experimentation, data analysis, and publishing.
+        Includes senior thesis, collaborative university research, and lab work.</p>
+      <a href="#" class="view-more">View Details</a>
+    </div>
+
+    <div class="resume-section">
+      <h3>Project Teams</h3>
+      <p>Group projects that emphasize teamwork, communication, and building innovative tech solutions with fellow
+        developers and designers. Often showcased in hackathons or design reviews.</p>
+      <a href="#" class="view-more">View Details</a>
+    </div>
+
+    <div class="resume-section">
+      <h3>Class Projects</h3>
+      <p>Assignments and capstone experiences from university that turned into polished and functional applications.
+        Demonstrate deep technical understanding and creative implementation.</p>
+      <a href="#" class="view-more">View Details</a>
+    </div>
+
+    <div class="resume-section">
+      <h3>Work Experience</h3>
+      <p>Real-world software development and engineering work done as part of internships or employment. Highlights
+        include product contributions, debugging, system design, and professional collaboration.</p>
+      <a href="#" class="view-more">View Details</a>
     </div>
   </div>
-
-  <!-- Modal -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <button class="close-btn" onclick="closeModal()">&times;</button>
-      <div id="modal-body"></div>
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById("modal");
-    const modalBody = document.getElementById("modal-body");
-
-    function openModal(category) {
-      let content = '';
-      switch (category) {
-        case 'Research':
-          content = '<h3>Research Projects</h3><p>Detailed breakdown of academic research goes here. You can add tabs for papers, experiments, findings, and future work.</p>';
-          break;
-        case 'Team':
-          content = '<h3>Team Projects</h3><p>Highlight your collaborative projects. Break it down into team roles, goals, and outcomes.</p>';
-          break;
-        case 'Class':
-          content = '<h3>Class Projects</h3><p>Showcase university class projects with links to GitHub or demos.</p>';
-          break;
-        case 'Work':
-          content = '<h3>Work Projects</h3><p>Detail your professional contributions with emphasis on technologies used and challenges overcome.</p>';
-          break;
-      }
-      modalBody.innerHTML = content;
-      modal.style.display = 'flex';
-    }
-
-    function closeModal() {
-      modal.style.display = 'none';
-    }
-
-    window.onclick = function (e) {
-      if (e.target === modal) {
-        closeModal();
-      }
-    }
-  </script>
 </body>
 
 </html>

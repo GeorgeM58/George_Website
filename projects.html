@@ -95,7 +95,20 @@
       color: #555;
     }
 
-    .view-more {
+    .details-list {
+      margin-top: 15px;
+      padding-left: 20px;
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .details-list li {
+      margin: 8px 0;
+      list-style-type: disc;
+      color: #444;
+    }
+
+    .toggle-button {
       display: inline-block;
       margin-top: 15px;
       padding: 8px 16px;
@@ -104,9 +117,12 @@
       border-radius: 6px;
       text-decoration: none;
       transition: background 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
     }
 
-    .view-more:hover {
+    .toggle-button:hover {
       background: #25623c;
     }
 
@@ -139,31 +155,60 @@
     <div class="resume-section">
       <h3>Research</h3>
       <p>Projects driven by academic and scientific inquiry, focusing on experimentation, data analysis, and publishing.
-        Includes senior thesis, collaborative university research, and lab work.</p>
-      <a href="#" class="view-more">View Details</a>
+      </p>
+      <button class="toggle-button" onclick="toggleDetails('research-list')">View Details</button>
+      <ul class="details-list" id="research-list">
+        <li>Senior Thesis on Embedded Systems Security</li>
+        <li>Neural Interface EEG Signal Processing</li>
+        <li>Robotic Swarm AI Behaviors</li>
+      </ul>
     </div>
 
     <div class="resume-section">
       <h3>Project Teams</h3>
-      <p>Group projects that emphasize teamwork, communication, and building innovative tech solutions with fellow
-        developers and designers. Often showcased in hackathons or design reviews.</p>
-      <a href="#" class="view-more">View Details</a>
+      <p>Group projects that emphasize teamwork and innovation, showcased in hackathons or design challenges.</p>
+      <button class="toggle-button" onclick="toggleDetails('team-list')">View Details</button>
+      <ul class="details-list" id="team-list">
+        <li>Autonomous Drone Swarm Coordination</li>
+        <li>Smart Trash Can (Hackathon Winner)</li>
+        <li>Green Energy IoT Dashboard</li>
+      </ul>
     </div>
 
     <div class="resume-section">
       <h3>Class Projects</h3>
-      <p>Assignments and capstone experiences from university that turned into polished and functional applications.
-        Demonstrate deep technical understanding and creative implementation.</p>
-      <a href="#" class="view-more">View Details</a>
+      <p>University coursework turned into functional builds demonstrating deep technical knowledge.</p>
+      <button class="toggle-button" onclick="toggleDetails('class-list')">View Details</button>
+      <ul class="details-list" id="class-list">
+        <li>RC Car for ECE 3140</li>
+        <li>Sand Box Topographic Map for ECE 5725</li>
+        <li>Smart Watch for ECE 5730</li>
+        <li>8-Bit ALU in Cadence Verisium for ECE 4760</li>
+      </ul>
     </div>
 
     <div class="resume-section">
       <h3>Work Experience</h3>
-      <p>Real-world software development and engineering work done as part of internships or employment. Highlights
-        include product contributions, debugging, system design, and professional collaboration.</p>
-      <a href="#" class="view-more">View Details</a>
+      <p>Professional software development and engineering roles with real-world applications and impact.</p>
+      <button class="toggle-button" onclick="toggleDetails('work-list')">View Details</button>
+      <ul class="details-list" id="work-list">
+        <li>Firmware Engineer Intern at XYZ Tech</li>
+        <li>Frontend Web Developer at ABC Corp</li>
+        <li>Systems Designer at Innovative Solutions Inc.</li>
+      </ul>
     </div>
   </div>
+
+  <script>
+    function toggleDetails(id) {
+      const list = document.getElementById(id);
+      if (list.style.display === "block") {
+        list.style.display = "none";
+      } else {
+        list.style.display = "block";
+      }
+    }
+  </script>
 </body>
 
 </html>

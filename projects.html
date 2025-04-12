@@ -57,7 +57,7 @@
 
     .container {
       padding: 80px 20px;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
       animation: fadeIn 0.8s ease-in-out;
     }
@@ -95,17 +95,34 @@
       color: #555;
     }
 
-    .details-list {
-      margin-top: 15px;
-      padding-left: 20px;
+    .project-details {
       display: none;
+      margin-top: 15px;
       animation: fadeIn 0.5s ease forwards;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
     }
 
-    .details-list li {
-      margin: 8px 0;
-      list-style-type: disc;
-      color: #444;
+    .project {
+      margin-bottom: 20px;
+    }
+
+    .project h4 {
+      margin: 10px 0 5px;
+      font-size: 1.2rem;
+      color: #2c7a4d;
+    }
+
+    .project p {
+      margin: 0 0 10px;
+    }
+
+    .project img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 10px 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .toggle-button {
@@ -153,60 +170,40 @@
     <h2>Project Portfolio</h2>
 
     <div class="resume-section">
-      <h3>Research</h3>
-      <p>Projects driven by academic and scientific inquiry, focusing on experimentation, data analysis, and publishing.
-      </p>
-      <button class="toggle-button" onclick="toggleDetails('research-list')">View Details</button>
-      <ul class="details-list" id="research-list">
-        <li>Senior Thesis on Embedded Systems Security</li>
-        <li>Neural Interface EEG Signal Processing</li>
-        <li>Robotic Swarm AI Behaviors</li>
-      </ul>
-    </div>
-
-    <div class="resume-section">
-      <h3>Project Teams</h3>
-      <p>Group projects that emphasize teamwork and innovation, showcased in hackathons or design challenges.</p>
-      <button class="toggle-button" onclick="toggleDetails('team-list')">View Details</button>
-      <ul class="details-list" id="team-list">
-        <li>Autonomous Drone Swarm Coordination</li>
-        <li>Smart Trash Can (Hackathon Winner)</li>
-        <li>Green Energy IoT Dashboard</li>
-      </ul>
-    </div>
-
-    <div class="resume-section">
       <h3>Class Projects</h3>
       <p>University coursework turned into functional builds demonstrating deep technical knowledge.</p>
-      <button class="toggle-button" onclick="toggleDetails('class-list')">View Details</button>
-      <ul class="details-list" id="class-list">
-        <li>RC Car for ECE 3140</li>
-        <li>Sand Box Topographic Map for ECE 5725</li>
-        <li>Smart Watch for ECE 5730</li>
-        <li>8-Bit ALU in Cadence Verisium for ECE 4760</li>
-      </ul>
-    </div>
-
-    <div class="resume-section">
-      <h3>Work Experience</h3>
-      <p>Professional software development and engineering roles with real-world applications and impact.</p>
-      <button class="toggle-button" onclick="toggleDetails('work-list')">View Details</button>
-      <ul class="details-list" id="work-list">
-        <li>Firmware Engineer Intern at XYZ Tech</li>
-        <li>Frontend Web Developer at ABC Corp</li>
-        <li>Systems Designer at Innovative Solutions Inc.</li>
-      </ul>
+      <button class="toggle-button" onclick="toggleDetails('class-details')">View Details</button>
+      <div class="project-details" id="class-details">
+        <div class="project">
+          <h4>RC Car for ECE 3140</h4>
+          <img src="images/rc_car.jpg" alt="RC Car" />
+          <p>Designed and programmed a Bluetooth-controlled RC car using an Arduino and mobile interface. <a
+              href="https://github.com/username/rc-car" target="_blank">GitHub Repo</a></p>
+        </div>
+        <div class="project">
+          <h4>Sand Box Topographic Map for ECE 5725</h4>
+          <img src="images/sandbox_map.jpg" alt="Sandbox Map" />
+          <p>Built an augmented reality sandbox with real-time topographic projection using Kinect and a Raspberry Pi.
+          </p>
+        </div>
+        <div class="project">
+          <h4>Smart Watch for ECE 5730</h4>
+          <img src="images/smartwatch.jpg" alt="Smartwatch" />
+          <p>Created a custom smartwatch prototype with real-time data tracking and Wi-Fi synchronization.</p>
+        </div>
+        <div class="project">
+          <h4>8-Bit ALU in Cadence Verisium for ECE 4760</h4>
+          <img src="images/alu.jpg" alt="8-bit ALU" />
+          <p>Designed an 8-bit arithmetic logic unit in Verilog and verified functionality in Cadence simulation.</p>
+        </div>
+      </div>
     </div>
   </div>
 
   <script>
     function toggleDetails(id) {
-      const list = document.getElementById(id);
-      if (list.style.display === "block") {
-        list.style.display = "none";
-      } else {
-        list.style.display = "block";
-      }
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === "block" ? "none" : "block";
     }
   </script>
 </body>

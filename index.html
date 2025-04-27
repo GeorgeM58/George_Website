@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Personal Website</title>
+  <title>George Maidhof | Personal Website</title>
+
   <style>
     * {
       margin: 0;
@@ -68,6 +69,7 @@
       color: #fffae1;
     }
 
+    /* Hero Section */
     header {
       height: 100vh;
       background: linear-gradient(135deg, #5fbf77, #2c7a4d);
@@ -126,23 +128,6 @@
       transform: scale(1.2);
     }
 
-    section {
-      padding: 80px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    section h2 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    section p {
-      line-height: 1.6;
-      font-size: 1.1rem;
-    }
-
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -167,7 +152,66 @@
       }
     }
 
-    /* Handles Section Styling */
+    /* About Me - Scrapbook Style */
+    section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .about-scrapbook {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .scrapbook-entry {
+      display: flex;
+      align-items: center;
+      margin: 40px 0;
+      max-width: 1000px;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+
+    .scrapbook-entry.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .scrapbook-entry img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      flex-shrink: 0;
+    }
+
+    .scrapbook-entry p {
+      flex: 1;
+      margin: 0 30px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .scrapbook-entry .left {
+      order: -1;
+    }
+
+    .scrapbook-entry .right {
+      order: 1;
+    }
+
+    /* Handles Section */
     .handles-logos {
       display: flex;
       justify-content: center;
@@ -207,6 +251,7 @@
     <a href="projects.html">Projects</a>
     <a href="photos.html">Photos</a>
     <a href="GeorgeMaidhof Resume.pdf" download>Resume</a>
+    <a href="hobbies.html">Interests</a>
   </nav>
 
   <!-- Hero / Home Section -->
@@ -218,15 +263,31 @@
     </div>
   </header>
 
-  <!-- About Me Section -->
-  <section id="about">
+  <!-- About Me Scrapbook Section -->
+  <section id="about" class="about-scrapbook">
     <h2>About Me</h2>
-    <p>
-      #Todo
-    </p>
+
+    <div class="scrapbook-entry">
+      <img src="index/photo1.jpg" alt="Running" class="left">
+      <p>Hello! I'm George Maidhof, an aspiring Logical Design Engineer who loves running, gaming, and chasing new
+        challenges!</p>
+    </div>
+
+    <div class="scrapbook-entry">
+      <img src="index/photo2.jpg" alt="Swimming" class="right">
+      <p>Outside of engineering, I recharge by swimming, whether it's at the pool or in open water. Swimming brings
+        balance to my life.</p>
+    </div>
+
+    <div class="scrapbook-entry">
+      <img src="index/photo3.jpg" alt="Speedrunning" class="left">
+      <p>I'm passionate about speedrunning video games — pushing myself to reach new personal records, both in games and
+        in life!</p>
+    </div>
+
   </section>
 
-  <!-- Handles Section -->
+  <!-- Find Me Online Section -->
   <section id="handles">
     <h2>Find Me Online</h2>
     <div class="handles-logos">
@@ -245,48 +306,29 @@
     </div>
   </section>
 
-  <!-- Scroll Effects Script -->
+  <!-- Scripts for scroll animations -->
   <script>
     const handlesLogos = document.querySelector('.handles-logos');
+    const scrapbookEntries = document.querySelectorAll('.scrapbook-entry');
 
     function revealOnScroll() {
       const triggerBottom = window.innerHeight * 0.85;
-      const boxTop = handlesLogos.getBoundingClientRect().top;
-      if (boxTop < triggerBottom) {
+
+      const boxTopHandles = handlesLogos.getBoundingClientRect().top;
+      if (boxTopHandles < triggerBottom) {
         handlesLogos.classList.add('visible');
       }
-    }
 
-    function highlightNav() {
-      const sections = document.querySelectorAll("section");
-      const navLinks = document.querySelectorAll("nav a");
-
-      let current = "home";
-      sections.forEach((section) => {
-        const top = window.scrollY + 100;
-        const offset = section.offsetTop;
-        if (top >= offset) {
-          current = section.getAttribute("id");
-        }
-      });
-
-      navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${current}`) {
-          link.classList.add("active");
+      scrapbookEntries.forEach(entry => {
+        const boxTop = entry.getBoundingClientRect().top;
+        if (boxTop < triggerBottom) {
+          entry.classList.add('visible');
         }
       });
     }
 
-    window.addEventListener("scroll", () => {
-      revealOnScroll();
-      highlightNav();
-    });
-
-    window.addEventListener("load", () => {
-      revealOnScroll();
-      highlightNav();
-    });
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
   </script>
 
 </body>

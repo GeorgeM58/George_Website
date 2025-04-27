@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>George Maidhof | Hobbies</title>
-
+  <title>Hobbies - George Maidhof</title>
   <style>
     * {
       margin: 0;
@@ -16,7 +15,7 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f5f5f5;
+      background: #fdfdfd;
       color: #333;
     }
 
@@ -30,210 +29,149 @@
       gap: 2rem;
       z-index: 1000;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      animation: slideDown 0.6s ease-in-out;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
-      position: relative;
-      padding: 0.3rem 0;
-      transition: all 0.3s ease;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 2px;
-      width: 100%;
-      background-color: #d4f5e9;
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s ease;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
-      transform: scale(1.05);
       color: #d4f5e9;
     }
 
-    nav a:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
-    nav a.active {
-      color: #fffae1;
-    }
-
-    header {
-      height: 40vh;
-      background: linear-gradient(135deg, #5fbf77, #2c7a4d);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    header h1 {
-      font-size: 3rem;
-    }
-
-    main {
-      padding: 50px 20px;
-      max-width: 1200px;
+    .container {
+      padding: 80px 20px;
+      max-width: 1000px;
       margin: auto;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+      text-align: left;
     }
 
     .hobby-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 80px 0;
-      gap: 40px;
-      flex-wrap: wrap;
+      margin-bottom: 40px;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
 
-    .hobby-section:nth-child(even) {
-      flex-direction: row-reverse;
+    .hobby-section:hover {
+      transform: scale(1.02);
     }
 
-    .hobby-image {
-      flex: 1 1 400px;
+    .hobby-section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #2c7a4d;
     }
 
-    .hobby-image img {
+    .hobby-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .hobby-images {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .hobby-images img {
       width: 100%;
-      height: 400px;
+      border-radius: 10px;
       object-fit: cover;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
 
-    .hobby-text {
-      flex: 1 1 400px;
-      font-size: 1.3rem;
-      line-height: 1.7;
-      padding: 20px;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-      transform: translateY(40px);
-      opacity: 0;
-      transition: all 0.8s ease;
+    .hobby-images img:hover {
+      transform: scale(1.05);
     }
 
-    .hobby-text.visible {
-      transform: translateY(0);
-      opacity: 1;
-    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
 
-    /* Chart Section */
-    .chart-section {
-      margin-top: 120px;
-      text-align: center;
-    }
-
-    .chart-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-    }
-
-    .chart-placeholder {
-      margin: 30px auto;
-      width: 90%;
-      max-width: 800px;
-      height: 400px;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: #999;
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- Navbar -->
+  <!-- Sticky Navigation -->
   <nav>
     <a href="index.html">Home</a>
     <a href="projects.html">Projects</a>
     <a href="photos.html">Photos</a>
     <a href="GeorgeMaidhof Resume.pdf" download>Resume</a>
-    <a href="hobbies.html" class="active">Interests</a>
+    <a href="hobbies.html">Hobbies</a>
   </nav>
 
-  <!-- Header -->
-  <header>
-    <h1>My Hobbies</h1>
-  </header>
+  <div class="container">
+    <h2>Hobbies and Interests</h2>
 
-  <!-- Main Content -->
-  <main>
-
-    <section class="hobby-section">
-      <div class="hobby-image">
-        <img src="hobbies/run.jpg" alt="Running">
+    <!-- Example Hobby Section -->
+    <div class="hobby-section">
+      <h3>Photography</h3>
+      <p>Capturing moments through the lens. Exploring nature, architecture, and street photography in my free time.</p>
+      <div class="hobby-images">
+        <img src="images/photo1.jpg" alt="Photography Sample 1">
+        <img src="images/photo2.jpg" alt="Photography Sample 2">
       </div>
-      <div class="hobby-text">
-        Text
+    </div>
+
+    <div class="hobby-section">
+      <h3>Travel</h3>
+      <p>Exploring new cultures and places around the world. Always looking for the next adventure!</p>
+      <div class="hobby-images">
+        <img src="images/travel1.jpg" alt="Travel Sample 1">
+        <img src="images/travel2.jpg" alt="Travel Sample 2">
       </div>
-    </section>
+    </div>
 
-    <section class="hobby-section">
-      <div class="hobby-image">
-        <img src="hobbies/swim.jpg" alt="Swimming">
+    <div class="hobby-section">
+      <h3>Sports and Fitness</h3>
+      <p>Staying active through a variety of sports including soccer, hiking, and running marathons.</p>
+      <div class="hobby-images">
+        <img src="images/sports1.jpg" alt="Sports Sample 1">
+        <img src="images/sports2.jpg" alt="Sports Sample 2">
       </div>
-      <div class="hobby-text">
-        Text
-      </div>
-    </section>
+    </div>
 
-    <section class="hobby-section">
-      <div class="hobby-image">
-        <img src="hobbies/speedrun.jpg" alt="Speedrunning">
-      </div>
-      <div class="hobby-text">
-        Text
-      </div>
-    </section>
+    <!-- Add more hobby sections as needed -->
 
-    <section class="hobby-section">
-      <div class="hobby-image">
-        <img src="hobbies/other.jpg" alt="Other Hobby">
-      </div>
-      <div class="hobby-text">
-        Text
-      </div>
-    </section>
-
-  </main>
-
-  <script>
-    const hobbyTexts = document.querySelectorAll('.hobby-text');
-
-    function revealHobbyTexts() {
-      const triggerBottom = window.innerHeight * 0.85;
-
-      hobbyTexts.forEach(text => {
-        const boxTop = text.getBoundingClientRect().top;
-        if (boxTop < triggerBottom) {
-          text.classList.add('visible');
-        }
-      });
-    }
-
-    window.addEventListener('scroll', revealHobbyTexts);
-    window.addEventListener('load', revealHobbyTexts);
-  </script>
+  </div>
 
 </body>
 

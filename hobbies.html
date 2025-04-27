@@ -2,99 +2,235 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hobbies - George Maidhof</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>George Maidhof | Hobbies</title>
+
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #e0f7fa;
-      color: #333;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(135deg, #5fbf77, #2c7a4d);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+      padding: 0.3rem 0;
+      transition: all 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+      background-color: #d4f5e9;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    nav a:hover {
+      transform: scale(1.05);
+      color: #d4f5e9;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    nav a.active {
+      color: #fffae1;
+    }
+
+    header {
+      height: 40vh;
+      background: linear-gradient(135deg, #5fbf77, #2c7a4d);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    header h1 {
+      font-size: 3rem;
+    }
+
+    main {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .hobby-wall {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .hobby-item {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
       display: flex;
       flex-direction: column;
-      align-items: center;
     }
 
-    h1 {
-      margin-top: 60px;
-      font-size: 3rem;
-      color: #00796b;
+    .hobby-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .hobby-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .hobby-item p {
+      padding: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Chart Section */
+    .chart-section {
+      margin-top: 100px;
       text-align: center;
     }
 
-    .hobbies-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      margin: 60px 20px;
-    }
-
-    .hobby-card {
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 30px;
-      width: 250px;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-
-    .hobby-card:hover {
-      transform: scale(1.1) rotate(1deg);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-    }
-
-    .hobby-icon {
-      font-size: 4rem;
+    .chart-section h2 {
+      font-size: 2.2rem;
       margin-bottom: 20px;
     }
 
-    .hobby-title {
+    .chart-placeholder {
+      margin: 30px auto;
+      width: 90%;
+      max-width: 800px;
+      height: 400px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.5rem;
-      color: #00796b;
-      margin-bottom: 10px;
+      color: #999;
     }
 
-    .hobby-description {
-      font-size: 1rem;
-      color: #555;
+    /* Fade in effect */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 
 <body>
 
-  <h1>My Interests</h1>
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="photos.html">Photos</a>
+    <a href="GeorgeMaidhof Resume.pdf" download>Resume</a>
+    <a href="hobbies.html" class="active">Interests</a>
+  </nav>
 
-  <div class="hobbies-container">
-    <div class="hobby-card">
-      <div class="hobby-icon">🏃‍♂️</div>
-      <div class="hobby-title">Running</div>
-      <div class="hobby-description">
-        Text
+  <!-- Header -->
+  <header>
+    <h1>My Hobbies</h1>
+  </header>
+
+  <!-- Main Wall -->
+  <main>
+    <div class="hobby-wall">
+
+      <div class="hobby-item fade-in">
+        <img src="hobbies/run.jpg" alt="Running">
+        <p>Text</p>
       </div>
+
+      <div class="hobby-item fade-in">
+        <img src="hobbies/swim.jpg" alt="Swimming">
+        <p>Text</p>
+      </div>
+
+      <div class="hobby-item fade-in">
+        <img src="hobbies/speedrun.jpg" alt="Speedrunning">
+        <p>Text</p>
+      </div>
+
+      <div class="hobby-item fade-in">
+        <img src="hobbies/other.jpg" alt="Other Hobby">
+        <p>Text</p>
+      </div>
+
     </div>
 
-    <div class="hobby-card">
-      <div class="hobby-icon">🏊‍♂️</div>
-      <div class="hobby-title">Swimming</div>
-      <div class="hobby-description">
-        Text
+    <!-- Chart Area -->
+    <section class="chart-section fade-in">
+      <h2>Performance Over Time</h2>
+      <div class="chart-placeholder">
+        Chart will go here
       </div>
-    </div>
+    </section>
 
-    <div class="hobby-card">
-      <div class="hobby-icon">🎮</div>
-      <div class="hobby-title">Speedrunning</div>
-      <div class="hobby-description">
-        Text
-      </div>
-    </div>
-  </div>
+  </main>
+
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+
+    function revealOnScroll() {
+      const triggerBottom = window.innerHeight * 0.85;
+
+      faders.forEach(item => {
+        const boxTop = item.getBoundingClientRect().top;
+        if (boxTop < triggerBottom) {
+          item.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
 
 </body>
 

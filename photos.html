@@ -67,9 +67,23 @@
     <a href="index.html">Home</a>
     <a href="projects.html">Projects</a>
     <a href="photos.html">Photos</a>
-    <a href="GeorgeMaidhof Resume.pdf" download>Resume</a>
+    <a id="resume-link" href="GeorgeMaidhof Resume.pdf" download>Resume</a>
     <a href="hobbies.html">Hobbies</a>
   </nav>
+
+  <script>
+    document.getElementById('resume-link').addEventListener('click', function (event) {
+      event.preventDefault();
+      const pdfUrl = this.href;
+
+      window.open(pdfUrl, '_blank');
+
+      const anchor = document.createElement('a');
+      anchor.href = pdfUrl;
+      anchor.download = 'GeorgeMaidhof Resume.pdf';
+      anchor.click();
+    });
+  </script>
 
 
   <!-- Photos Section -->

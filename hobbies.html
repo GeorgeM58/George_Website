@@ -84,53 +84,63 @@
     }
 
     main {
-      padding: 80px 20px;
+      padding: 50px 20px;
       max-width: 1200px;
       margin: auto;
     }
 
-    .hobby-wall {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+    .hobby-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 80px 0;
+      gap: 40px;
+      flex-wrap: wrap;
     }
 
-    .hobby-item {
+    .hobby-section:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .hobby-image {
+      flex: 1 1 400px;
+    }
+
+    .hobby-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .hobby-text {
+      flex: 1 1 400px;
+      font-size: 1.3rem;
+      line-height: 1.7;
+      padding: 20px;
       background: white;
       border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      display: flex;
-      flex-direction: column;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      transform: translateY(40px);
+      opacity: 0;
+      transition: all 0.8s ease;
     }
 
-    .hobby-item:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-    }
-
-    .hobby-item img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-
-    .hobby-item p {
-      padding: 1rem;
-      font-size: 1.1rem;
-      line-height: 1.6;
+    .hobby-text.visible {
+      transform: translateY(0);
+      opacity: 1;
     }
 
     /* Chart Section */
     .chart-section {
-      margin-top: 100px;
+      margin-top: 120px;
       text-align: center;
     }
 
     .chart-section h2 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
     }
 
     .chart-placeholder {
@@ -146,18 +156,6 @@
       justify-content: center;
       font-size: 1.5rem;
       color: #999;
-    }
-
-    /* Fade in effect */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-out;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
   </style>
 </head>
@@ -178,34 +176,47 @@
     <h1>My Hobbies</h1>
   </header>
 
-  <!-- Main Wall -->
+  <!-- Main Content -->
   <main>
-    <div class="hobby-wall">
 
-      <div class="hobby-item fade-in">
+    <section class="hobby-section">
+      <div class="hobby-image">
         <img src="hobbies/run.jpg" alt="Running">
-        <p>Text</p>
       </div>
+      <div class="hobby-text">
+        Text
+      </div>
+    </section>
 
-      <div class="hobby-item fade-in">
+    <section class="hobby-section">
+      <div class="hobby-image">
         <img src="hobbies/swim.jpg" alt="Swimming">
-        <p>Text</p>
       </div>
+      <div class="hobby-text">
+        Text
+      </div>
+    </section>
 
-      <div class="hobby-item fade-in">
+    <section class="hobby-section">
+      <div class="hobby-image">
         <img src="hobbies/speedrun.jpg" alt="Speedrunning">
-        <p>Text</p>
       </div>
+      <div class="hobby-text">
+        Text
+      </div>
+    </section>
 
-      <div class="hobby-item fade-in">
+    <section class="hobby-section">
+      <div class="hobby-image">
         <img src="hobbies/other.jpg" alt="Other Hobby">
-        <p>Text</p>
       </div>
+      <div class="hobby-text">
+        Text
+      </div>
+    </section>
 
-    </div>
-
-    <!-- Chart Area -->
-    <section class="chart-section fade-in">
+    <!-- Chart Section -->
+    <section class="chart-section">
       <h2>Performance Over Time</h2>
       <div class="chart-placeholder">
         Chart will go here
@@ -215,21 +226,21 @@
   </main>
 
   <script>
-    const faders = document.querySelectorAll('.fade-in');
+    const hobbyTexts = document.querySelectorAll('.hobby-text');
 
-    function revealOnScroll() {
+    function revealHobbyTexts() {
       const triggerBottom = window.innerHeight * 0.85;
 
-      faders.forEach(item => {
-        const boxTop = item.getBoundingClientRect().top;
+      hobbyTexts.forEach(text => {
+        const boxTop = text.getBoundingClientRect().top;
         if (boxTop < triggerBottom) {
-          item.classList.add('visible');
+          text.classList.add('visible');
         }
       });
     }
 
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
+    window.addEventListener('scroll', revealHobbyTexts);
+    window.addEventListener('load', revealHobbyTexts);
   </script>
 
 </body>

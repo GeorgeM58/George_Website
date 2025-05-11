@@ -20,7 +20,6 @@
       color: #333;
     }
 
-    /* Sticky Nav */
     nav {
       position: sticky;
       top: 0;
@@ -69,7 +68,6 @@
       color: #fffae1;
     }
 
-    /* Hero Section */
     header {
       height: 100vh;
       background: linear-gradient(135deg, #5fbf77, #2c7a4d);
@@ -152,7 +150,6 @@
       }
     }
 
-    /* About Me - Scrapbook Style */
     section {
       padding: 80px 20px;
       max-width: 1000px;
@@ -211,7 +208,6 @@
       order: 1;
     }
 
-    /* Handles Section */
     .handles-logos {
       display: flex;
       justify-content: center;
@@ -276,12 +272,10 @@
       color: #444;
     }
 
-    /* Make sure modal is above everything */
     .modal {
       display: none;
       position: fixed;
       z-index: 9999;
-      /* Forcefully above logos */
       left: 0;
       top: 0;
       width: 100vw;
@@ -291,12 +285,10 @@
       align-items: center;
     }
 
-    /* Modal visible state */
     .modal.show {
       display: flex;
     }
 
-    /* Enlarged content box */
     .modal-content {
       background-color: #fdf8f0;
       padding: 40px;
@@ -311,7 +303,6 @@
       line-height: 1.5;
     }
 
-    /* Ensure close button is visible and properly placed */
     .modal .close {
       position: absolute;
       top: 10px;
@@ -322,7 +313,6 @@
       cursor: pointer;
     }
 
-    /* Fix logo section so it doesn't overlay modal */
     .handles-logos {
       position: relative;
       z-index: 1 !important;
@@ -398,7 +388,6 @@
       document.getElementById(id).classList.remove('show');
     }
 
-    // Optional: Make scrapbook entries animate in
     window.addEventListener('scroll', () => {
       document.querySelectorAll('.scrapbook-entry').forEach(entry => {
         const rect = entry.getBoundingClientRect();
@@ -415,7 +404,6 @@
     });
   </script>
 
-  <!-- Hero Section -->
   <header id="home">
     <h1>Hello, I'm George Maidhof</h1>
     <p>Aspiring Logical Design Engineer In Tech!</p>
@@ -424,7 +412,6 @@
     </div>
   </header>
 
-  <!-- About Me Scrapbook Section -->
   <section id="about" class="about-scrapbook">
     <h2>About Me</h2>
 
@@ -480,7 +467,6 @@
     </div>
 
 
-    <!-- Modals -->
     <div id="running-modal" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeModal('running-modal')">&times;</span>
@@ -527,7 +513,6 @@
     </div>
   </section>
 
-  <!-- Find Me Online Section -->
   <section id="handles">
     <h2>Find Me Online</h2>
     <div class="handles-logos">

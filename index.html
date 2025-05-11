@@ -240,8 +240,38 @@
       transform: scale(1.15) rotate(2deg);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
+
+    .hobby-detail {
+      display: none;
+      margin-top: 5px;
+      font-style: italic;
+      color: #555;
+    }
+
+    button {
+      margin-left: 10px;
+      font-size: 0.9em;
+      padding: 3px 8px;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
   </style>
 </head>
+
+<script>
+  function toggleDetails(id) {
+    const detail = document.getElementById(id);
+    detail.style.display = (detail.style.display === "block") ? "none" : "block";
+  }
+</script>
 
 <body>
 
@@ -282,28 +312,50 @@
     <h2>About Me</h2>
 
     <div class="scrapbook-entry">
-      <img src="index/photo1.jpg" class="left">
-      <p>My name is George Maidhof, a Masters of Engineering student at Cornell University. I am studying Electrical and
-        Computer Engineering with a Computer Science Minor and distinction in Engineering Leadership from the Selander
-        Center.</p>
+      <img src="index/photo1.jpg" class="left" alt="George at Cornell">
+      <p>
+        My name is George Maidhof, a Masters of Engineering student at Cornell University.
+        I am studying Electrical and Computer Engineering with a Computer Science Minor and
+        distinction in Engineering Leadership from the Selander Center.
+      </p>
     </div>
 
     <div class="scrapbook-entry">
-      <img src="index/photo2.jpg" class="right">
-      <p>In my career I want to focus on the digital design of hardware either of FPGAs or ASICs. Long term, I aim to
-        take some management position where I can lead a team towards a unified goal while helping those around me reach
-        their dreams. In order to be successful in these this field, I must first gain the necessary technical
-        experience.</p>
+      <img src="index/photo2.jpg" class="right" alt="Career Goals">
+      <p>
+        In my career I want to focus on the digital design of hardware—either FPGAs or ASICs.
+        Long term, I aim to take a management position where I can lead a team toward a unified
+        goal while helping those around me reach their dreams. To succeed in this field, I must
+        first gain the necessary technical experience.
+      </p>
     </div>
 
     <div class="scrapbook-entry">
-      <img src="index/photo3.jpg" class="left">
-      <p>In order to operate at my fullest, many of my hobbies are ways for me to stay mentaly and physically active
-        while also having fun with what I enjoy. Some activies include running, swimming, body surfing, basketball (both
-        watching and playing), hiking, building cool electronics, speedrunning video games, and spending time with
-        family and friends!</p>
+      <img src="index/photo3.jpg" class="left" alt="George's Hobbies">
+      <p>
+        To operate at my fullest, I stay mentally and physically active through various hobbies:
+      <ul>
+        <li>
+          Running
+          <button onclick="toggleDetails('running')">Learn more</button>
+          <p id="running" class="hobby-detail">Running helps me stay disciplined and clear my mind—it’s my go-to
+            activity for stress relief and setting personal goals.</p>
+        </li>
+        <li>
+          Building electronics
+          <button onclick="toggleDetails('electronics')">Learn more</button>
+          <p id="electronics" class="hobby-detail">From microcontrollers to FPGA projects, I love creating practical
+            gadgets and experimenting with embedded systems.</p>
+        </li>
+        <li>
+          Speedrunning games
+          <button onclick="toggleDetails('speedrunning')">Learn more</button>
+          <p id="speedrunning" class="hobby-detail">Speedrunning taps into my analytical side—I enjoy breaking down game
+            mechanics and optimizing routes.</p>
+        </li>
+      </ul>
+      </p>
     </div>
-
   </section>
 
   <!-- Find Me Online Section -->

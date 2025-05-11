@@ -327,6 +327,45 @@
       position: relative;
       z-index: 1 !important;
     }
+
+    .category-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .category {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 180px;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .category img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .category button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .category button:hover {
+      background-color: #45a049;
+    }
   </style>
 
 <body>
@@ -413,19 +452,26 @@
       </p>
     </div>
 
-    <!-- Hobby Buttons -->
-    <div class="hobby-icons">
-      <div class="hobby-button" onclick="openModal('running-modal')">
+    <div class="category-row">
+      <div class="category" onclick="openModal('running-modal')">
         <img src="index/running.png" alt="Running">
-        <span>Running</span>
+        <button>Running</button>
       </div>
-      <div class="hobby-button" onclick="openModal('electronics-modal')">
+      <div class="category" onclick="openModal('swimming-modal')">
+        <img src="index/swimming.png" alt="Swimming">
+        <button>Swimming</button>
+      </div>
+      <div class="category" onclick="openModal('basketball-modal')">
+        <img src="index/basketball.png" alt="Basketball">
+        <button>Basketball</button>
+      </div>
+      <div class="category" onclick="openModal('electronics-modal')">
         <img src="index/electronics.png" alt="Electronics">
-        <span>Electronics</span>
+        <button>Electronics</button>
       </div>
-      <div class="hobby-button" onclick="openModal('speedrunning-modal')">
+      <div class="category" onclick="openModal('speedrunning-modal')">
         <img src="index/speedrunning.png" alt="Speedrunning">
-        <span>Speedrunning</span>
+        <button>Speedrunning</button>
       </div>
     </div>
 
@@ -436,6 +482,24 @@
         <h3>Running</h3>
         <p>Running helps me stay disciplined and clear my mind—it’s my go-to
           activity for stress relief and setting personal goals.</p>
+      </div>
+    </div>
+
+    <div id="swimming-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('swimming-modal')">&times;</span>
+        <h3>Swimming</h3>
+        <p>Swimming helps balance my physical endurance with breath control, and I enjoy how meditative it feels in open
+          water.</p>
+      </div>
+    </div>
+
+    <div id="basketball-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('basketball-modal')">&times;</span>
+        <h3>Basketball</h3>
+        <p>Basketball keeps me active and social—it's a fast-paced team sport that sharpens both strategy and agility.
+        </p>
       </div>
     </div>
 

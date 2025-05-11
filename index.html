@@ -280,7 +280,6 @@
       display: none;
       position: fixed;
       z-index: 99999;
-      /* Ensure this is the highest value */
       left: 0;
       top: 0;
       width: 100vw;
@@ -290,19 +289,22 @@
       align-items: center;
     }
 
+
     .modal-content {
       background-color: #fdf8f0;
       padding: 40px;
       border-radius: 16px;
-      width: 95vw;
-      height: 90vh;
-      max-width: none;
+      width: 90%;
+      max-width: 900px;
+      /* larger size */
+      max-height: 90vh;
+      overflow-y: auto;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
       position: relative;
-      font-size: 20px;
-      line-height: 1.6;
-      overflow-y: auto;
+      font-size: 18px;
+      line-height: 1.5;
     }
+
 
 
     .modal .close {
@@ -317,6 +319,11 @@
 
     .modal.show {
       display: flex;
+    }
+
+    .handles-logos {
+      position: relative;
+      z-index: 1;
     }
   </style>
 

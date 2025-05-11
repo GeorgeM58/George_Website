@@ -276,10 +276,12 @@
       color: #444;
     }
 
+    /* Make sure modal is above everything */
     .modal {
       display: none;
       position: fixed;
-      z-index: 99999;
+      z-index: 9999;
+      /* Forcefully above logos */
       left: 0;
       top: 0;
       width: 100vw;
@@ -289,14 +291,18 @@
       align-items: center;
     }
 
+    /* Modal visible state */
+    .modal.show {
+      display: flex;
+    }
 
+    /* Enlarged content box */
     .modal-content {
       background-color: #fdf8f0;
       padding: 40px;
       border-radius: 16px;
-      width: 90%;
-      max-width: 900px;
-      /* larger size */
+      width: 95%;
+      max-width: 1000px;
       max-height: 90vh;
       overflow-y: auto;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
@@ -305,8 +311,7 @@
       line-height: 1.5;
     }
 
-
-
+    /* Ensure close button is visible and properly placed */
     .modal .close {
       position: absolute;
       top: 10px;
@@ -317,13 +322,10 @@
       cursor: pointer;
     }
 
-    .modal.show {
-      display: flex;
-    }
-
+    /* Fix logo section so it doesn't overlay modal */
     .handles-logos {
       position: relative;
-      z-index: 1;
+      z-index: 1 !important;
     }
   </style>
 

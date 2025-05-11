@@ -330,41 +330,29 @@
 
     .category-row {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      gap: 20px;
+      justify-content: center;
+      gap: 30px;
       margin-top: 20px;
     }
 
     .category {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      width: 180px;
+      flex: 0 1 calc(33.333% - 40px);
       text-align: center;
-      padding: 10px;
-      cursor: pointer;
     }
 
     .category img {
       width: 100%;
-      height: auto;
-      border-radius: 8px;
+      max-width: 200px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
     }
 
     .category button {
       margin-top: 10px;
-      padding: 8px 12px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .category button:hover {
-      background-color: #45a049;
+      padding: 8px 16px;
+      font-size: 1em;
     }
   </style>
 
@@ -454,7 +442,6 @@
 
     <h1 style="text-align: center; margin-top: 20px;">Hobbies</h1>
 
-
     <div class="category-row">
       <div class="category" onclick="openModal('running-modal')">
         <img src="index/running.jpg" alt="Running">
@@ -477,6 +464,7 @@
         <button>Speedrunning</button>
       </div>
     </div>
+
 
     <!-- Modals -->
     <div id="running-modal" class="modal">
@@ -524,8 +512,6 @@
       </div>
     </div>
   </section>
-
-  </section>"
 
   <!-- Find Me Online Section -->
   <section id="handles">

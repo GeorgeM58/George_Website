@@ -356,32 +356,47 @@
         To operate at my fullest, I stay mentally and physically active through various hobbies.
       </p>
       <div class="hobby-icons">
-        <div class="hobby-button" onclick="toggleDetails('running')">
-          <img src="index/github.jpg" alt="Running">
+        <div class="hobby-button" onclick="openModal('runningModal')">
+          <img src="index/running.png" alt="Running">
           <span>Running</span>
         </div>
-        <div class="hobby-button" onclick="toggleDetails('electronics')">
-          <img src="index/github.jpg" alt="Electronics">
+        <div class="hobby-button" onclick="openModal('electronicsModal')">
+          <img src="index/electronics.png" alt="Electronics">
           <span>Electronics</span>
         </div>
-        <div class="hobby-button" onclick="toggleDetails('speedrunning')">
-          <img src="index/github.jpg" alt="Speedrunning">
+        <div class="hobby-button" onclick="openModal('speedrunningModal')">
+          <img src="index/speedrunning.png" alt="Speedrunning">
           <span>Speedrunning</span>
         </div>
       </div>
 
-      <div id="running" class="hobby-detail">
-        Running helps me stay disciplined and clear my mind—it’s my go-to activity for stress relief and setting
-        personal goals.
+      <!-- Modal Structure (repeat this block per hobby) -->
+      <div id="runningModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('runningModal')">&times;</span>
+          <h3>Running</h3>
+          <p>Running helps me stay disciplined and clear my mind—it’s my go-to activity for stress relief and setting
+            personal goals.</p>
+        </div>
       </div>
-      <div id="electronics" class="hobby-detail">
-        From microcontrollers to FPGA projects, I love creating practical gadgets and experimenting with embedded
-        systems.
+
+      <div id="electronicsModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('electronicsModal')">&times;</span>
+          <h3>Electronics</h3>
+          <p>From microcontrollers to FPGA projects, I love creating practical gadgets and experimenting with embedded
+            systems.</p>
+        </div>
       </div>
-      <div id="speedrunning" class="hobby-detail">
-        Speedrunning taps into my analytical side—I enjoy breaking down game mechanics and optimizing routes.
+
+      <div id="speedrunningModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('speedrunningModal')">&times;</span>
+          <h3>Speedrunning</h3>
+          <p>Speedrunning taps into my analytical side—I enjoy breaking down game mechanics and optimizing routes.</p>
+        </div>
       </div>
-    </div>
+
 
   </section>
 

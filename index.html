@@ -333,28 +333,13 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
-      margin-top: 20px;
+      margin-top: 30px;
     }
 
     .category {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      display: inline-block;
       text-align: center;
-      margin: 20px;
-      transition: transform 0.3s ease, filter 0.3s ease;
-    }
-
-    .category img {
-      width: 100%;
-      max-width: 200px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 16px;
-      padding: 6px;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4);
-      border: 3px dashed #ff69b4;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
       transition: transform 0.3s ease, filter 0.3s ease;
     }
 
@@ -363,20 +348,22 @@
       filter: brightness(1.1);
     }
 
-    .category button {
-      margin-top: 10px;
-      background-color: #ff69b4;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 12px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+    .category img {
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, filter 0.3s ease;
     }
 
-    .category button:hover {
-      background-color: #ff1493;
+    .category span {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 1rem;
+      color: #333;
+      transition: color 0.3s ease;
     }
   </style>
 
@@ -469,23 +456,23 @@
     <div class="category-row">
       <div class="category" onclick="openModal('running-modal')">
         <img src="index/running.jpg" alt="Running">
-        <button>Running</button>
+        <span>Running</span>
       </div>
       <div class="category" onclick="openModal('swimming-modal')">
         <img src="index/swimming.jpg" alt="Swimming">
-        <button>Swimming</button>
+        <span>Swimming</span>
       </div>
       <div class="category" onclick="openModal('basketball-modal')">
         <img src="index/basketball.jpg" alt="Basketball">
-        <button>Basketball</button>
+        <span>Basketball</span>
       </div>
       <div class="category" onclick="openModal('electronics-modal')">
         <img src="index/electronics.jpg" alt="Electronics">
-        <button>Electronics</button>
+        <span>Electronics</span>
       </div>
       <div class="category" onclick="openModal('speedrunning-modal')">
         <img src="index/speedrunning.png" alt="Speedrunning">
-        <button>Speedrunning</button>
+        <span>Speedrunning</span>
       </div>
     </div>
 

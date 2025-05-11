@@ -279,86 +279,44 @@
     .modal {
       display: none;
       position: fixed;
-      z-index: 999;
+      z-index: 10000;
       left: 0;
       top: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(30, 30, 30, 0.7);
-      /* Soft dark overlay */
-      display: flex;
-      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(20, 20, 20, 0.8);
+      /* dim background */
       justify-content: center;
+      align-items: center;
     }
 
     .modal-content {
       background-color: #fdf8f0;
-      /* Off-white paper tone */
+      /* softer off-white */
       padding: 30px;
-      border-radius: 20px;
+      border-radius: 16px;
       width: 90%;
-      max-width: 700px;
-      max-height: 80vh;
-      overflow-y: auto;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
       position: relative;
-      font-family: 'Georgia', serif;
-      /* Optional, for a handwritten vibe */
-    }
-
-    .modal-content h3 {
-      margin-top: 0;
-      font-size: 28px;
-    }
-
-    .modal-content p {
       font-size: 18px;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
-    .close {
+    .modal .close {
       position: absolute;
-      top: 12px;
-      right: 20px;
+      top: 10px;
+      right: 15px;
       font-size: 28px;
       font-weight: bold;
       color: #444;
       cursor: pointer;
     }
 
-    .close:hover {
-      color: #000;
+    .modal.show {
+      display: flex;
     }
   </style>
-</head>
-
-<script>
-  function toggleDetails(id) {
-    const detail = document.getElementById(id);
-    detail.style.display = (detail.style.display === "block") ? "none" : "block";
-  }
-</script>
-
-<script>
-  function openModal(id) {
-    document.getElementById(id).style.display = 'block';
-  }
-
-  function closeModal(id) {
-    document.getElementById(id).style.display = 'none';
-  }
-
-  // Optional: Close modal when clicking outside content
-  window.onclick = function (event) {
-    document.querySelectorAll('.modal').forEach(modal => {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    });
-  };
-</script>
-
-
 
 <body>
 
@@ -437,32 +395,49 @@
         </div>
       </div>
 
-      <!-- Modal Structure (repeat this block per hobby) -->
-      <div id="runningModal" class="modal">
+      <ul>
+        <li>
+          Running
+          <button onclick="openModal('running-modal')">Learn more</button>
+        </li>
+        <li>
+          Building electronics
+          <button onclick="openModal('electronics-modal')">Learn more</button>
+        </li>
+        <li>
+          Speedrunning games
+          <button onclick="openModal('speedrunning-modal')">Learn more</button>
+        </li>
+      </ul>
+
+      <!-- MODALS -->
+      <div id="running-modal" class="modal">
         <div class="modal-content">
-          <span class="close" onclick="closeModal('runningModal')">&times;</span>
+          <span class="close" onclick="closeModal('running-modal')">&times;</span>
           <h3>Running</h3>
-          <p>Running helps me stay disciplined and clear my mind—it’s my go-to activity for stress relief and setting
-            personal goals.</p>
+          <p>Running helps me stay disciplined and clear my mind—it’s my go-to
+            activity for stress relief and setting personal goals.</p>
         </div>
       </div>
 
-      <div id="electronicsModal" class="modal">
+      <div id="electronics-modal" class="modal">
         <div class="modal-content">
-          <span class="close" onclick="closeModal('electronicsModal')">&times;</span>
-          <h3>Electronics</h3>
-          <p>From microcontrollers to FPGA projects, I love creating practical gadgets and experimenting with embedded
-            systems.</p>
+          <span class="close" onclick="closeModal('electronics-modal')">&times;</span>
+          <h3>Building Electronics</h3>
+          <p>From microcontrollers to FPGA projects, I love creating practical
+            gadgets and experimenting with embedded systems.</p>
         </div>
       </div>
 
-      <div id="speedrunningModal" class="modal">
+      <div id="speedrunning-modal" class="modal">
         <div class="modal-content">
-          <span class="close" onclick="closeModal('speedrunningModal')">&times;</span>
-          <h3>Speedrunning</h3>
-          <p>Speedrunning taps into my analytical side—I enjoy breaking down game mechanics and optimizing routes.</p>
+          <span class="close" onclick="closeModal('speedrunning-modal')">&times;</span>
+          <h3>Speedrunning Games</h3>
+          <p>Speedrunning taps into my analytical side—I enjoy breaking down game
+            mechanics and optimizing routes.</p>
         </div>
       </div>
+
 
 
   </section>
@@ -509,6 +484,25 @@
 
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
+  </script>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).classList.add('show');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('show');
+    }
+
+    // Clicking outside the modal-content closes it
+    window.addEventListener('click', function (event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target === modal) {
+          modal.classList.remove('show');
+        }
+      });
+    });
   </script>
 
 </body>

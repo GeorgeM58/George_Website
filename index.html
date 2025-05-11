@@ -318,24 +318,26 @@
       z-index: 1 !important;
     }
 
-    .category-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .category-pyramid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 30px;
-      justify-content: center;
-      max-width: 900px;
-      margin: 0 auto;
       margin-top: 30px;
     }
 
+    .category-row {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+    }
 
     .category {
       text-align: center;
       cursor: pointer;
       transition: transform 0.3s ease, filter 0.3s ease;
-      width: 275px;
+      width: 250px;
     }
-
 
     .category:hover {
       transform: scale(1.05);
@@ -343,8 +345,8 @@
     }
 
     .category img {
-      width: 275px;
-      height: 275px;
+      width: 250px;
+      height: 200px;
       object-fit: cover;
       border-radius: 20px;
       box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
@@ -442,27 +444,31 @@
     </div>
 
     <h2 style="text-align: center; margin-top: 20px;">Hobbies</h2>
+    <div class="category-pyramid">
+      <div class="category-row top-row">
+        <div class="category" onclick="openModal('running-modal')">
+          <img src="index/running.jpg" alt="Running">
+          <span>Running</span>
+        </div>
+        <div class="category" onclick="openModal('swimming-modal')">
+          <img src="index/swimming.jpg" alt="Swimming">
+          <span>Swimming</span>
+        </div>
+        <div class="category" onclick="openModal('basketball-modal')">
+          <img src="index/basketball.png" alt="Basketball">
+          <span>Basketball</span>
+        </div>
+      </div>
 
-    <div class="category-row">
-      <div class="category" onclick="openModal('running-modal')">
-        <img src="index/running.jpg" alt="Running">
-        <span>Running</span>
-      </div>
-      <div class="category" onclick="openModal('swimming-modal')">
-        <img src="index/swimming.jpg" alt="Swimming">
-        <span>Swimming</span>
-      </div>
-      <div class="category" onclick="openModal('basketball-modal')">
-        <img src="index/basketball.jpg" alt="Basketball">
-        <span>Basketball</span>
-      </div>
-      <div class="category" onclick="openModal('electronics-modal')">
-        <img src="index/electronics.jpg" alt="Electronics">
-        <span>Electronics</span>
-      </div>
-      <div class="category" onclick="openModal('speedrunning-modal')">
-        <img src="index/speedrunning.png" alt="Speedrunning">
-        <span>Speedrunning</span>
+      <div class="category-row bottom-row">
+        <div class="category" onclick="openModal('electronics-modal')">
+          <img src="index/electronics.jpg" alt="Electronics">
+          <span>Electronics</span>
+        </div>
+        <div class="category" onclick="openModal('speedrunning-modal')">
+          <img src="index/speedrunning.png" alt="Speedrunning">
+          <span>Speedrunning</span>
+        </div>
       </div>
     </div>
 

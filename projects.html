@@ -295,7 +295,11 @@
         <div class="project">
           <h4>RC Car for ECE 3140</h4>
           <img src="images/rc_car.jpg" alt="RC Car" />
-          <p>Designed and programmed a Bluetooth-controlled RC car using an Arduino and mobile interface. See our
+          <p>My partner and I designed and programmed a Bluetooth-controlled RC car using an Arduino FRDM Board. Our
+            design takes input from a Bluetooth controller (in our case a XBox Controller) and the controls are mapped
+            on our laptop through Pygame. We then use the Arduino as a receiver between the computer and FRDM board
+            where controls are mapped to GPIO functionality and PWM to our motor wheels. By using H-Bridges, we are able
+            to go in multiple directions. See our
             website here <a href="https://pages.github.coecis.cornell.edu/ece3140-sp2023/gpm58-pis7/"
               target="_blank">GitHub Repo</a>.</p>
         </div>
@@ -304,7 +308,10 @@
           <img src="images/sandbox_map.jpg" alt="Sandbox Map" />
           <p>Built an topographic sandbox with real-time topographic projection using an XBox 360 1414 Kinect, a
             Projector, and a Raspberry
-            Pi. See our
+            Pi. By getting depth values in the sand and filtering out values not in range, we normalize data points and
+            perform a linear mapping of RBG colors. We made use of a Linux open source library, OpenKinect to abstract
+            the values from the Kinect. This library also makes use of all four cores making use all all effective
+            hardware, letting us run nearly in real-time. See our
             website here <a href="https://georgem58.github.io/ECE5725_Final_Project_Website/" target=" _blank">GitHub
               Repo</a>.</p>
         </div>
@@ -318,7 +325,10 @@
           <h4>8-Bit ALU in Cadence Verisium for ECE 4760</h4>
           <img src="images/alu.jpg" alt="8-bit ALU" />
           <p>Designed an 8-bit arithmetic logic unit for VLSI using Cadence on the gate level and performed routing. We
-            then verified the ALU worked through creating a testbench. </p>
+            then verified the ALU worked through creating a testbench. By using knowledge we have learned in our
+            Computer Archectiure and Microelectronics class, we interact with the boundary between digital hardware and
+            circuitry. Using Cadence, we were able to explore the delays from our circuit and find to route and connect
+            each transistor circuit.</p>
         </div>
       </div>
     </div>

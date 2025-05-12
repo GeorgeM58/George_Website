@@ -293,48 +293,52 @@
         <div class="project">
           <h4>Sand Box Topographic Map for ECE 5725</h4>
           <img src="images/sandbox_map.jpg" alt="Sandbox Map" />
-          <p>Built an augmented reality sandbox with real-time topographic projection using Kinect and a Raspberry Pi.
-          </p>
-        </div>
+          <p>Built an topographic sandbox with real-time topographic projection using an XBox 360 1414 Kinect, a
+            Projector, and a Raspberry
+            Pi. See our
+            website here<a href="https://georgem58.github.io/ECE5725_Final_Project_Website/" target=" _blank">GitHub
+              Repo</a></p>
+          <!-- </div>
         <div class="project">
           <h4>Smart Watch for ECE 5730</h4>
           <img src="images/smartwatch.jpg" alt="Smartwatch" />
           <p>Created a custom smartwatch prototype with real-time data tracking and Wi-Fi synchronization.</p>
+        </div> -->
+          <div class="project">
+            <h4>8-Bit ALU in Cadence Verisium for ECE 4760</h4>
+            <img src="images/alu.jpg" alt="8-bit ALU" />
+            <p>Designed an 8-bit arithmetic logic unit in Verilog and verified functionality in Cadence simulation. </p>
+          </div>
         </div>
-        <div class="project">
-          <h4>8-Bit ALU in Cadence Verisium for ECE 4760</h4>
-          <img src="images/alu.jpg" alt="8-bit ALU" />
-          <p>Designed an 8-bit arithmetic logic unit in Verilog and verified functionality in Cadence simulation.</p>
+      </div>
+
+      <div class="resume-section">
+        <h3>Work Experience</h3>
+        <p>Professional Work Experience in the Field of Electrical and Computer Engineering</p>
+        <button class="toggle-button" onclick="toggleDetails('work-details')">View Details</button>
+        <div class="project-details" id="work-details">
+          <div class="project">
+            <h4>Logical Design and Digital Verification Engineer Intern</h4>
+            <img src="projects/marvell.png" alt="Internship" />
+            <p>
+              At <a href="https://www.marvell.com/" target="_blank">Marvell</a>, my job as a Digital Verification
+              Engineer
+              Intern was to create Universal Verification
+              Methodology (UVM) to verify pre-silicon designs in SystemVerilog. This included writing technical
+              doucmentation for users and customers, creating testing enviorments, debugging through waveform analysis,
+              regressions, coverage, and quality analysis.
+            </p>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="resume-section">
-      <h3>Work Experience</h3>
-      <p>Professional Work Experience in the Field of Electrical and Computer Engineering</p>
-      <button class="toggle-button" onclick="toggleDetails('work-details')">View Details</button>
-      <div class="project-details" id="work-details">
-        <div class="project">
-          <h4>Logical Design and Digital Verification Engineer Intern</h4>
-          <img src="projects/marvell.png" alt="Internship" />
-          <p>
-            At <a href="https://www.marvell.com/" target="_blank">Marvell</a>, my job as a Digital Verification Engineer
-            Intern was to create Universal Verification
-            Methodology (UVM) to verify pre-silicon designs in SystemVerilog. This included writing technical
-            doucmentation for users and customers, creating testing enviorments, debugging through waveform analysis,
-            regressions, coverage, and quality analysis.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function toggleDetails(id) {
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === "block" ? "none" : "block";
-    }
-  </script>
+    <script>
+      function toggleDetails(id) {
+        const el = document.getElementById(id);
+        el.style.display = el.style.display === "block" ? "none" : "block";
+      }
+    </script>
 </body>
 
 </html>

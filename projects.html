@@ -159,6 +159,25 @@
       margin: 10px 0;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .skills span {
+      display: inline-block;
+      background: #2c7a4d;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      white-space: nowrap;
+    }
   </style>
 </head>
 
@@ -200,12 +219,22 @@
         <div class="project">
           <h4>MEng Project: ML Model for FPGA Optimization During Allocation</h4>
           <img src="images/research.png">
+          <div class="skills">
+            <span>Machine Learning</span>
+            <span>FPGA Design</span>
+            <span>Hardware Optimization</span>
+          </div>
           <p>For my Masters of Engineering Project, I decided to continue working within the Zhang Research Group
             studying the applications of Software and Hardware in the realm of FPGA Design during allocation. This
             research project is letting me take a step towards leading my own project in a complicated realm of hardware
             design while also exploring and developing necessary skills in Machine Learning applications for hardware
             development. </p>
           <h4>Undergraduate Research: MLIR FPGA Compiler</h4>
+          <div class="skills">
+            <span>Machine Learning</span>
+            <span>FPGA Design</span>
+            <span>Hardware Optimization</span>
+          </div>
           <p>When starting my Undergraduate research in the Zhang Research Group, my introduction project was the
             development of a Graduate Tutorial Manuscript for ECE 6775: High-Level Synthesis, <a
               href="https://www.csl.cornell.edu/courses/ece6775/pdf/hls_setup_guide.pdf" target="_blank"> seen here</a>.
@@ -328,7 +357,7 @@
             then verified the ALU worked through creating a testbench. By using knowledge we have learned in our
             Computer Archectiure and Microelectronics class, we interact with the boundary between digital hardware and
             circuitry. Using Cadence, we were able to explore the delays from our circuit and find to route and connect
-            each transistor circuit.</p>
+            each hardware level component. </p>
         </div>
       </div>
     </div>
